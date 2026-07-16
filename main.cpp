@@ -18,15 +18,29 @@ int main()
         "Ichika beat.mp3"
     };
     std::cout<<"===Welcome to the best music Player(maybe not)==="<<std::endl;
-
-    for(int i = 0; i < Playlist.size(); i++){
-        std::cout<<"Chose a song mate!"<<std::endl;
-        std::cout<<Playlist[i]<<std::endl;
-    }
+    std::cout<<"   Chose a song mate!  "<<std::endl;
+    int choice;
     
-    ma_engine_play_sound(&engine, "Project X.mp3", NULL);
+    for(int i = 0; i < Playlist.size(); i++){
+        std::cout<<i + 1<<"."<<Playlist[i]<<std::endl;
+        
+    }
+    std::cin>>choice;
+    switch (choice){
+        case 1:
+            ma_engine_play_sound(&engine, Playlist[0].c_str(), NULL);
+            break;
+        case 2:
+            ma_engine_play_sound(&engine, Playlist[1].c_str(), NULL);
+            break;
+        case 3:
+            ma_engine_play_sound(&engine, Playlist[2].c_str(), NULL);
+            break;
+        }
+    
+    std::cin.ignore(1);
 
-    printf("Press Enter to quit...");
+    std::cout<<"Press Enter to quit...";
     getchar();
 
     ma_engine_uninit(&engine);
